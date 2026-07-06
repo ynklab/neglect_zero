@@ -1,0 +1,251 @@
+item,condition,list,position_in_list,sentence,shape_top_1,shape_bottom_1,colour1_top_1,colour2_top_1,colour1_bottom_1,colour2_bottom_1,n_colour1_top_1,n_colour2_top_1,n_colour1_bottom_1,n_colour2_bottom_1,first_picture_label,second_picture_label,position_mentioned_object,zero,color1,color2,color3,color4,picture_type_A,picture_type_B,shape_top_2,shape_bottom_2,colour1_top_2,colour2_top_2,colour1_bottom_2,colour2_bottom_2,n_colour1_top_2,n_colour2_top_2,n_colour1_bottom_2,n_colour2_bottom_2,correct_card
+1010,11,1000,5,There are exactly four green triangles.,triangle,circle,brown,green,pink,green,0,4,1,3,1121,1122,top,yes,orange,blue,black,purple,1,2,triangle,circle,brown,pink,pink,green,0,4,3,1,First
+1010,11,1000,6,Exactly one circle is green.,triangle,circle,brown,pink,pink,green,0,4,3,1,1122,1121,bottom,yes,orange,blue,black,purple,3,5,triangle,circle,brown,green,pink,green,0,4,1,3,First
+1010,11,1000,7,There are between two and four green circles.,triangle,circle,brown,green,pink,green,0,4,1,3,1121,1122,bottom,no,orange,blue,black,purple,2,1,triangle,circle,brown,pink,pink,green,0,4,3,1,First
+1010,11,1000,15,There are between two and four pink triangles,triangle,circle,brown,pink,pink,green,0,4,3,1,1122,1121,top,no,orange,blue,black,purple,3,5,triangle,circle,brown,green,pink,green,0,4,1,3,First
+1010,11,1000,16,There are neither exactly two green triangles nor exactly three green circles.,triangle,circle,brown,pink,pink,green,0,4,3,1,1122,1121,both,yes,orange,blue,black,purple,2,1,triangle,circle,brown,green,pink,green,0,4,1,3,First
+1010,11,1000,17,There are neither exactly two green triangles nor exactly three pink circles.,triangle,circle,brown,green,pink,green,0,4,1,3,1121,1122,both,yes,orange,blue,black,purple,4,5,triangle,circle,brown,pink,pink,green,0,4,3,1,First
+1010,12,1000,25,Exactly three circles are pink.,triangle,circle,brown,green,pink,green,0,4,1,3,1121,5,bottom,no,orange,blue,black,purple,1,2,better,,,,,,,,,,Second
+1010,12,1000,26,Exactly Half of the triangles are pink.,triangle,circle,brown,green,pink,green,0,4,1,3,1121,5,top,no,orange,blue,black,purple,4,5,better,,,,,,,,,,Second
+1010,12,1000,27,Exactly Half of the triangles are green.,triangle,circle,brown,pink,pink,green,0,4,3,1,1122,5,top,yes,orange,black,purple,blue,1,2,better,,,,,,,,,,Second
+1010,13,1000,35,Exactly three circles are pink.,triangle,circle,brown,pink,pink,green,0,4,3,1,1122,5,bottom,yes,orange,black,purple,blue,3,5,better,,,,,,,,,,First
+1010,13,1000,36,There are seven green shapes.,triangle,circle,brown,green,pink,green,0,4,1,3,1121,5,both,no,orange,black,purple,blue,2,1,better,,,,,,,,,,First
+1010,13,1000,37,There is exactly one green shape.,triangle,circle,brown,pink,pink,green,0,4,3,1,1122,5,both,no,orange,black,purple,blue,3,5,better,,,,,,,,,,First
+1020,11,1000,45,There are exactly two brown hearts.,heart,cross,brown,green,brown,green,2,2,1,3,1123,1124,top,yes,orange,black,purple,blue,2,1,heart,cross,brown,green,brown,green,1,3,2,2,First
+1020,11,1000,46,There are neither exactly two brown hearts nor exactly four green hearts.,heart,cross,brown,green,brown,green,1,3,2,2,1124,1123,top,yes,orange,black,purple,blue,4,5,heart,cross,brown,green,brown,green,2,2,1,3,First
+1020,11,1000,47,There are exactly three green crosses.,heart,cross,brown,green,brown,green,2,2,1,3,1123,1124,bottom,no,orange,black,purple,blue,1,2,heart,cross,brown,green,brown,green,1,3,2,2,First
+1020,11,1000,55,Exactly Half of the crosses are brown.,heart,cross,brown,green,brown,green,1,3,2,2,1124,1123,bottom,no,orange,black,purple,blue,4,5,heart,cross,brown,green,brown,green,2,2,1,3,First
+1020,11,1000,56,The number of hearts in each color is the same.,heart,cross,brown,green,brown,green,2,2,1,3,1123,1124,top,yes,brown,green,pink,yellow,1,2,heart,cross,brown,green,brown,green,1,3,2,2,First
+1020,11,1000,57,Exactly Half of the crosses are green.,heart,cross,brown,green,brown,green,1,3,2,2,1124,1123,bottom,yes,brown,green,pink,yellow,3,5,heart,cross,brown,green,brown,green,2,2,1,3,First
+1020,12,1000,65,Exactly Half of the hearts are green.,heart,cross,brown,green,brown,green,2,2,1,3,1123,5,top,no,brown,green,pink,yellow,2,1,better,,,,,,,,,,First
+1020,12,1000,66,The number of crosses in each color is the same.,heart,cross,brown,green,brown,green,2,2,1,3,1123,5,bottom,no,brown,green,pink,yellow,3,5,better,,,,,,,,,,Second
+1020,12,1000,67,There are two hearts of each color.,heart,cross,brown,green,brown,green,1,3,2,2,1124,5,top,yes,brown,green,pink,yellow,2,1,better,,,,,,,,,,Second
+1020,13,1000,75,There are two crosses of each color.,heart,cross,brown,green,brown,green,1,3,2,2,1124,5,bottom,yes,brown,green,pink,yellow,4,5,better,,,,,,,,,,First
+1020,13,1000,76,There are exactly two brown crosses and exactly two green crosses.,heart,cross,brown,green,brown,green,1,3,2,2,1124,5,bottom,no,brown,green,pink,yellow,1,2,better,,,,,,,,,,First
+1020,13,1000,77,There are exactly three brown hearts.,heart,cross,brown,green,brown,green,2,2,1,3,1123,5,top,no,brown,green,pink,yellow,4,5,better,,,,,,,,,,Second
+1030,11,1000,85,There are between two and four brown triangles.,triangle,square,brown,green,pink,yellow,3,1,0,4,1125,1126,top,yes,green,grey,purple,turquoise,1,2,triangle,square,brown,green,pink,yellow,0,4,3,1,First
+1030,11,1000,86,There are between one and three yellow squares.,triangle,square,brown,green,pink,yellow,0,4,3,1,1126,1125,bottom,yes,green,grey,purple,turquoise,3,5,triangle,square,brown,green,pink,yellow,3,1,0,4,First
+1030,11,1000,87,Exactly four squares are yellow.,triangle,square,brown,green,pink,yellow,3,1,0,4,1125,1126,bottom,no,green,grey,purple,turquoise,2,1,triangle,square,brown,green,pink,yellow,0,4,3,1,First
+1030,11,1000,95,Exactly four triangles are green.,triangle,square,brown,green,pink,yellow,0,4,3,1,1126,1125,top,no,green,grey,purple,turquoise,3,5,triangle,square,brown,green,pink,yellow,3,1,0,4,First
+1030,11,1000,96,Exactly one shape is green.,triangle,square,brown,green,pink,yellow,3,1,0,4,1125,1126,both,yes,green,grey,purple,turquoise,2,1,triangle,square,brown,green,pink,yellow,0,4,3,1,First
+1030,11,1000,97,Exactly four shapes are yellow.,triangle,square,brown,green,pink,yellow,0,4,3,1,1126,1125,both,yes,green,grey,purple,turquoise,4,5,triangle,square,brown,green,pink,yellow,3,1,0,4,Second
+1030,12,1000,105,The number of triangles in each color is the same.,triangle,square,brown,green,pink,yellow,3,1,0,4,1125,5,top,no,green,grey,purple,turquoise,1,2,better,,,,,,,,,,Second
+1030,12,1000,106,The number of squares in each color is the same.,triangle,square,brown,green,pink,yellow,0,4,3,1,1126,5,bottom,no,green,grey,purple,turquoise,4,5,better,,,,,,,,,,Second
+1030,12,1000,107,Exactly Half of the triangles are yellow.,triangle,square,brown,green,pink,yellow,0,4,3,1,1126,5,bottom,yes,orange,blue,green,purple,1,2,better,,,,,,,,,,Second
+1030,13,1000,115,Three triangles are brown and four squares are yellow.,triangle,square,brown,green,pink,yellow,3,1,0,4,1125,5,both,yes,orange,blue,green,purple,3,5,better,,,,,,,,,,First
+1030,13,1000,116,There are neither exactly two yellow squares nor exactly three green triangles.,triangle,square,brown,green,pink,yellow,3,1,0,4,1125,5,both,no,orange,blue,green,purple,2,1,better,,,,,,,,,,First
+1030,13,1000,117,There are exactly three pink squares.,triangle,square,brown,green,pink,yellow,0,4,3,1,1126,5,bottom,no,orange,blue,green,purple,3,5,better,,,,,,,,,,First
+1011,11,1000,125,There are exactly four red hearts.,heart,square,grey,red,yellow,red,0,4,1,3,1127,1128,top,yes,orange,blue,green,purple,2,1,heart,square,grey,yellow,yellow,red,0,4,3,1,First
+1011,11,1000,126,Exactly one square is red.,heart,square,grey,yellow,yellow,red,0,4,3,1,1128,1127,bottom,yes,orange,blue,green,purple,4,5,heart,square,grey,red,yellow,red,0,4,1,3,First
+1011,11,1000,127,There are between two and four red squares.,heart,square,grey,red,yellow,red,0,4,1,3,1127,1128,bottom,no,orange,blue,green,purple,1,2,heart,square,grey,yellow,yellow,red,0,4,3,1,First
+1011,11,1000,135,There are between two and four yellow hearts,heart,square,grey,yellow,yellow,red,0,4,3,1,1128,1127,top,no,orange,blue,green,purple,4,5,heart,square,grey,red,yellow,red,0,4,1,3,First
+1011,11,1000,136,There are neither exactly two red hearts nor exactly three red squares.,heart,square,grey,yellow,yellow,red,0,4,3,1,1128,1127,both,yes,purple,yellow,black,grey,1,2,heart,square,grey,red,yellow,red,0,4,1,3,First
+1011,11,1000,137,There are neither exactly two red hearts nor exactly three yellow squares.,heart,square,grey,red,yellow,red,0,4,1,3,1127,1128,both,yes,purple,yellow,black,grey,3,5,heart,square,grey,yellow,yellow,red,0,4,3,1,First
+1011,12,1000,145,Exactly three squares are yellow.,heart,square,grey,red,yellow,red,0,4,1,3,1127,5,bottom,no,purple,yellow,black,grey,2,1,better,,,,,,,,,,Second
+1011,12,1000,146,Exactly Half of the hearts are yellow.,heart,square,grey,red,yellow,red,0,4,1,3,1127,5,top,no,purple,yellow,black,grey,3,5,better,,,,,,,,,,Second
+1011,12,1000,147,Exactly Half of the hearts are red.,heart,square,grey,yellow,yellow,red,0,4,3,1,1128,5,top,yes,purple,yellow,black,grey,2,1,better,,,,,,,,,,Second
+1011,13,1000,155,Exactly three squares are yellow.,heart,square,grey,yellow,yellow,red,0,4,3,1,1128,5,bottom,yes,purple,yellow,black,grey,4,5,better,,,,,,,,,,First
+1011,13,1000,156,There are seven red shapes.,heart,square,grey,red,yellow,red,0,4,1,3,1127,5,both,no,purple,yellow,black,grey,1,2,better,,,,,,,,,,First
+1021,11,1000,157,There are exactly two grey circles.,circle,heart,grey,red,grey,red,2,2,1,3,1129,1130,top,no,purple,yellow,black,grey,4,5,circle,heart,grey,red,grey,red,1,3,2,2,First
+1021,11,1000,165,There are neither exactly two grey circles nor exactly four red circles.,circle,heart,grey,red,grey,red,1,3,2,2,1130,1129,top,yes,red,brown,black,blue,1,2,circle,heart,grey,red,grey,red,2,2,1,3,First
+1021,11,1000,166,There are exactly three red hearts.,circle,heart,grey,red,grey,red,2,2,1,3,1129,1130,bottom,yes,red,brown,black,blue,3,5,circle,heart,grey,red,grey,red,1,3,2,2,First
+1021,11,1000,167,Exactly Half of the hearts are grey.,circle,heart,grey,red,grey,red,1,3,2,2,1130,1129,bottom,no,red,brown,black,blue,2,1,circle,heart,grey,red,grey,red,2,2,1,3,First
+1021,11,1000,175,The number of circles in each color is the same.,circle,heart,grey,red,grey,red,2,2,1,3,1129,1130,top,no,red,brown,black,blue,3,5,circle,heart,grey,red,grey,red,1,3,2,2,First
+1021,11,1000,176,Exactly Half of the hearts are red.,circle,heart,grey,red,grey,red,1,3,2,2,1130,1129,bottom,yes,red,brown,black,blue,2,1,circle,heart,grey,red,grey,red,2,2,1,3,Second
+1021,12,1000,177,Exactly Half of the circles are red.,circle,heart,grey,red,grey,red,2,2,1,3,1129,5,top,yes,red,brown,black,blue,4,5,better,,,,,,,,,,First
+1021,12,1000,185,The number of hearts in each color is the same.,circle,heart,grey,red,grey,red,2,2,1,3,1129,5,bottom,no,red,brown,black,blue,1,2,better,,,,,,,,,,Second
+1021,12,1000,186,There are two circles of each color.,circle,heart,grey,red,grey,red,1,3,2,2,1130,5,top,no,red,brown,black,blue,4,5,better,,,,,,,,,,Second
+1021,13,1000,187,There are two hearts of each color.,circle,heart,grey,red,grey,red,1,3,2,2,1130,5,bottom,yes,pink,green,yellow,black,1,2,better,,,,,,,,,,First
+1021,13,1000,195,There are exactly two grey hearts and exactly two red hearts.,circle,heart,grey,red,grey,red,1,3,2,2,1130,5,bottom,yes,pink,green,yellow,black,3,5,better,,,,,,,,,,First
+1021,13,1000,196,There are exactly three grey circles.,circle,heart,grey,red,grey,red,2,2,1,3,1129,5,top,no,pink,green,yellow,black,2,1,better,,,,,,,,,,Second
+1031,11,1000,197,There are between two and four grey crosses.,cross,triangle,grey,red,yellow,blue,3,1,0,4,1131,1132,top,no,pink,green,yellow,black,3,5,cross,triangle,grey,red,yellow,blue,0,4,3,1,First
+1031,11,1000,205,There are between one and three blue triangles.,cross,triangle,grey,red,yellow,blue,0,4,3,1,1132,1131,bottom,yes,pink,green,yellow,black,2,1,cross,triangle,grey,red,yellow,blue,3,1,0,4,First
+1031,11,1000,206,Exactly four triangles are blue.,cross,triangle,grey,red,yellow,blue,3,1,0,4,1131,1132,bottom,yes,pink,green,yellow,black,4,5,cross,triangle,grey,red,yellow,blue,0,4,3,1,First
+1031,11,1000,207,Exactly four crosses are red.,cross,triangle,grey,red,yellow,blue,0,4,3,1,1132,1131,top,no,pink,green,yellow,black,1,2,cross,triangle,grey,red,yellow,blue,3,1,0,4,First
+1031,11,1000,215,Exactly one shape is red.,cross,triangle,grey,red,yellow,blue,3,1,0,4,1131,1132,both,no,pink,green,yellow,black,4,5,cross,triangle,grey,red,yellow,blue,0,4,3,1,First
+1031,11,1000,216,Exactly four shapes are blue.,cross,triangle,grey,red,yellow,blue,0,4,3,1,1132,1131,both,yes,orange,turquoise,pink,grey,1,2,cross,triangle,grey,red,yellow,blue,3,1,0,4,Second
+1031,12,1000,217,The number of crosses in each color is the same.,cross,triangle,grey,red,yellow,blue,3,1,0,4,1131,5,top,yes,orange,turquoise,pink,grey,3,5,better,,,,,,,,,,Second
+1031,12,1000,225,The number of triangles in each color is the same.,cross,triangle,grey,red,yellow,blue,0,4,3,1,1132,5,bottom,no,orange,turquoise,pink,grey,2,1,better,,,,,,,,,,Second
+1031,12,1000,226,Exactly Half of the crosses are blue.,cross,triangle,grey,red,yellow,blue,0,4,3,1,1132,5,bottom,no,orange,turquoise,pink,grey,3,5,better,,,,,,,,,,Second
+1031,13,1000,227,Three crosses are grey and four triangles are blue.,cross,triangle,grey,red,yellow,blue,3,1,0,4,1131,5,both,yes,orange,turquoise,pink,grey,2,1,better,,,,,,,,,,First
+1031,13,1000,235,There are neither exactly two blue triangles nor exactly three red crosses.,cross,triangle,grey,red,yellow,blue,3,1,0,4,1131,5,both,yes,orange,turquoise,pink,grey,4,5,better,,,,,,,,,,First
+1031,13,1000,236,There are exactly three yellow triangles.,cross,triangle,grey,red,yellow,blue,0,4,3,1,1132,5,bottom,no,orange,turquoise,pink,grey,1,2,better,,,,,,,,,,First
+1012,11,1000,237,There are exactly four grey circles.,circle,cross,orange,grey,blue,grey,0,4,1,3,1135,1136,top,yes,orange,red,yellow,purple,1,2,circle,cross,orange,blue,blue,grey,0,4,3,1,First
+1012,11,1000,245,Exactly one cross is grey.,circle,cross,orange,blue,blue,grey,0,4,3,1,1136,1135,bottom,yes,orange,red,yellow,purple,3,5,circle,cross,orange,grey,blue,grey,0,4,1,3,First
+1012,11,1000,246,There are between two and four grey crosses.,circle,cross,orange,grey,blue,grey,0,4,1,3,1135,1136,bottom,no,orange,red,yellow,purple,2,1,circle,cross,orange,blue,blue,grey,0,4,3,1,First
+1012,11,1000,247,There are between two and four blue circles,circle,cross,orange,blue,blue,grey,0,4,3,1,1136,1135,top,no,orange,red,yellow,purple,3,5,circle,cross,orange,grey,blue,grey,0,4,1,3,First
+1012,11,1000,255,There are neither exactly two grey circles nor exactly three grey crosses.,circle,cross,orange,blue,blue,grey,0,4,3,1,1136,1135,both,yes,orange,red,yellow,purple,2,1,circle,cross,orange,grey,blue,grey,0,4,1,3,First
+1012,11,1000,256,There are neither exactly two grey circles nor exactly three blue crosses.,circle,cross,orange,grey,blue,grey,0,4,1,3,1135,1136,both,yes,orange,red,yellow,purple,4,5,circle,cross,orange,blue,blue,grey,0,4,3,1,First
+1012,12,1000,257,Exactly three crosses are blue.,circle,cross,orange,grey,blue,grey,0,4,1,3,1135,5,bottom,no,orange,red,yellow,purple,1,2,better,,,,,,,,,,Second
+1012,12,1000,265,Exactly Half of the circles are blue.,circle,cross,orange,grey,blue,grey,0,4,1,3,1135,5,top,no,orange,red,yellow,purple,4,5,better,,,,,,,,,,Second
+1012,12,1000,266,Exactly Half of the circles are grey.,circle,cross,orange,blue,blue,grey,0,4,3,1,1136,5,top,yes,orange,yellow,purple,red,1,2,better,,,,,,,,,,Second
+1012,13,1000,267,Exactly three crosses are blue.,circle,cross,orange,blue,blue,grey,0,4,3,1,1136,5,bottom,yes,orange,yellow,purple,red,3,5,better,,,,,,,,,,First
+1012,13,1000,275,There are seven grey shapes.,circle,cross,orange,grey,blue,grey,0,4,1,3,1135,5,both,no,orange,yellow,purple,red,2,1,better,,,,,,,,,,First
+1012,13,1000,276,There is exactly one grey shape.,circle,cross,orange,blue,blue,grey,0,4,3,1,1136,5,both,no,orange,yellow,purple,red,3,5,better,,,,,,,,,,First
+1022,11,1000,277,There are exactly two orange squares.,square,circle,orange,grey,orange,grey,2,2,1,3,1133,1134,top,no,orange,turquoise,pink,grey,4,5,square,circle,orange,grey,orange,grey,1,3,2,2,First
+1022,11,1000,285,There are neither exactly two grey squares nor exactly four grey squares.,square,circle,orange,grey,orange,grey,1,3,2,2,1134,1133,top,yes,blue,grey,brown,orange,1,2,square,circle,orange,grey,orange,grey,2,2,1,3,First
+1022,11,1000,286,There are exactly three grey circles.,square,circle,orange,grey,orange,grey,2,2,1,3,1133,1134,bottom,yes,blue,grey,brown,orange,3,5,square,circle,orange,grey,orange,grey,1,3,2,2,First
+1022,11,1000,287,Exactly Half of the circles are orange.,square,circle,orange,grey,orange,grey,1,3,2,2,1134,1133,bottom,no,blue,grey,brown,orange,2,1,square,circle,orange,grey,orange,grey,2,2,1,3,First
+1022,11,1000,295,The number of squares in each color is the same.,square,circle,orange,grey,orange,grey,2,2,1,3,1133,1134,top,no,blue,grey,brown,orange,3,5,square,circle,orange,grey,orange,grey,1,3,2,2,First
+1022,11,1000,296,Exactly Half of the circles are grey.,square,circle,orange,grey,orange,grey,1,3,2,2,1134,1133,bottom,yes,blue,grey,brown,orange,2,1,square,circle,orange,grey,orange,grey,2,2,1,3,First
+1022,12,1000,297,Exactly Half of the squares are grey.,square,circle,orange,grey,orange,grey,2,2,1,3,1133,5,top,yes,blue,grey,brown,orange,4,5,better,,,,,,,,,,First
+1022,12,1000,305,The number of circles in each color is the same.,square,circle,orange,grey,orange,grey,2,2,1,3,1133,5,bottom,no,blue,grey,brown,orange,1,2,better,,,,,,,,,,Second
+1022,12,1000,306,There are two squares of each color.,square,circle,orange,grey,orange,grey,1,3,2,2,1134,5,top,no,blue,grey,brown,orange,4,5,better,,,,,,,,,,Second
+1022,13,1000,307,There are two circles of each color.,square,circle,orange,grey,orange,grey,1,3,2,2,1134,5,bottom,yes,black,purple,blue,orange,1,2,better,,,,,,,,,,First
+1022,13,1000,315,There are exactly two grey circles and exactly two orange circles.,square,circle,orange,grey,orange,grey,1,3,2,2,1134,5,bottom,yes,black,purple,blue,orange,3,5,better,,,,,,,,,,First
+1022,13,1000,316,There are exactly three orange squares.,square,circle,orange,grey,orange,grey,2,2,1,3,1133,5,top,no,black,purple,blue,orange,2,1,better,,,,,,,,,,Second
+1032,11,1000,317,There are between two and four orange squares.,square,heart,orange,grey,blue,green,3,1,0,4,1137,1138,top,no,blue,green,yellow,black,3,5,square,heart,orange,grey,blue,green,0,4,3,1,First
+1032,11,1000,325,There are between one and three green hearts.,square,heart,orange,grey,blue,green,0,4,3,1,1138,1137,bottom,yes,blue,green,yellow,black,2,1,square,heart,orange,grey,blue,green,3,1,0,4,First
+1032,11,1000,326,Exactly four hearts are green.,square,heart,orange,grey,blue,green,3,1,0,4,1137,1138,bottom,yes,blue,green,yellow,black,4,5,square,heart,orange,grey,blue,green,0,4,3,1,First
+1032,11,1000,327,Exactly four squares are grey.,square,heart,orange,grey,blue,green,0,4,3,1,1138,1137,top,no,blue,green,yellow,black,1,2,square,heart,orange,grey,blue,green,3,1,0,4,First
+1032,11,1000,335,Exactly one shape is grey.,square,heart,orange,grey,blue,green,3,1,0,4,1137,1138,both,no,blue,green,yellow,black,4,5,square,heart,orange,grey,blue,green,0,4,3,1,First
+1032,11,1000,336,Exactly four shapes are green.,square,heart,orange,grey,blue,green,0,4,3,1,1138,1137,both,yes,brown,turquoise,blue,grey,1,2,square,heart,orange,grey,blue,green,3,1,0,4,Second
+1032,12,1000,337,The number of squares in each color is the same.,square,heart,orange,grey,blue,green,3,1,0,4,1137,5,top,yes,brown,turquoise,blue,grey,3,5,better,,,,,,,,,,Second
+1032,12,1000,345,The number of hearts in each color is the same.,square,heart,orange,grey,blue,green,0,4,3,1,1138,5,bottom,no,brown,turquoise,blue,grey,2,1,better,,,,,,,,,,Second
+1032,12,1000,346,Exactly Half of the squares are green.,square,heart,orange,grey,blue,green,0,4,3,1,1138,5,bottom,no,brown,turquoise,blue,grey,3,5,better,,,,,,,,,,Second
+1032,13,1000,347,Three squares are orange and four hearts are green.,square,heart,orange,grey,blue,green,3,1,0,4,1137,5,both,yes,brown,turquoise,blue,grey,2,1,better,,,,,,,,,,First
+1032,13,1000,355,There are neither exactly two green hearts nor exactly three grey squares.,square,heart,orange,grey,blue,green,3,1,0,4,1137,5,both,yes,brown,turquoise,blue,grey,4,5,better,,,,,,,,,,First
+1032,13,1000,356,There are exactly three blue hearts.,square,heart,orange,grey,blue,green,0,4,3,1,1138,5,bottom,no,brown,turquoise,blue,grey,1,2,better,,,,,,,,,,First
+1013,11,1000,357,There are exactly four orange squares.,square,heart,black,orange,green,orange,0,4,1,3,1141,1142,top,yes,orange,blue,black,purple,1,2,square,heart,black,green,green,orange,0,4,3,1,First
+1013,11,1000,365,Exactly one heart is orange.,square,heart,black,green,green,orange,0,4,3,1,1142,1141,bottom,yes,orange,blue,black,purple,3,5,square,heart,black,orange,green,orange,0,4,1,3,First
+1013,11,1000,366,There are between two and four orange hearts.,square,heart,black,orange,green,orange,0,4,1,3,1141,1142,bottom,no,orange,blue,black,purple,2,1,square,heart,black,green,green,orange,0,4,3,1,First
+1013,11,1000,367,There are between two and four green squares,square,heart,black,green,green,orange,0,4,3,1,1142,1141,top,no,orange,blue,black,purple,3,5,square,heart,black,orange,green,orange,0,4,1,3,First
+1013,11,1000,375,There are neither exactly two orange squares nor exactly three orange hearts.,square,heart,black,green,green,orange,0,4,3,1,1142,1141,both,yes,orange,blue,black,purple,2,1,square,heart,black,orange,green,orange,0,4,1,3,First
+1013,11,1000,376,There are neither exactly two orange squares nor exactly three green hearts.,square,heart,black,orange,green,orange,0,4,1,3,1141,1142,both,yes,orange,blue,black,purple,4,5,square,heart,black,green,green,orange,0,4,3,1,First
+1013,12,1000,377,Exactly three hearts are green.,square,heart,black,orange,green,orange,0,4,1,3,1141,5,bottom,no,orange,blue,black,purple,1,2,better,,,,,,,,,,Second
+1013,12,1000,385,Exactly Half of the squares are green.,square,heart,black,orange,green,orange,0,4,1,3,1141,5,top,no,orange,blue,black,purple,4,5,better,,,,,,,,,,Second
+1013,12,1000,386,Exactly Half of the squares are orange.,square,heart,black,green,green,orange,0,4,3,1,1142,5,top,yes,orange,black,purple,blue,1,2,better,,,,,,,,,,Second
+1013,13,1000,387,Exactly three hearts are green.,square,heart,black,green,green,orange,0,4,3,1,1142,5,bottom,yes,orange,black,purple,blue,3,5,better,,,,,,,,,,First
+1013,13,1000,395,There are seven orange shapes.,square,heart,black,orange,green,orange,0,4,1,3,1141,5,both,no,orange,black,purple,blue,2,1,better,,,,,,,,,,First
+1013,13,1000,396,There is exactly one orange shape.,square,heart,black,green,green,orange,0,4,3,1,1142,5,both,no,orange,black,purple,blue,3,5,better,,,,,,,,,,First
+1023,11,1000,397,There are exactly two black crosses.,cross,triangle,black,orange,black,orange,2,2,1,3,1139,1140,top,no,orange,turquoise,grey,grey,4,5,cross,triangle,black,orange,black,orange,1,3,2,2,First
+1023,11,1000,405,There are neither exactly two black crosses nor exactly four orange crosses.,cross,triangle,black,orange,black,orange,1,3,2,2,1140,1139,top,yes,blue,grey,brown,orange,1,2,cross,triangle,black,orange,black,orange,2,2,1,3,First
+1023,11,1000,406,There are exactly three orange triangles.,cross,triangle,black,orange,black,orange,2,2,1,3,1139,1140,bottom,yes,blue,grey,brown,orange,3,5,cross,triangle,black,orange,black,orange,1,3,2,2,First
+1023,11,1000,407,Exactly Half of the triangles are black.,cross,triangle,black,orange,black,orange,1,3,2,2,1140,1139,bottom,no,blue,grey,brown,orange,2,1,cross,triangle,black,orange,black,orange,2,2,1,3,First
+1023,11,1000,415,The number of crosses in each color is the same.,cross,triangle,black,orange,black,orange,2,2,1,3,1139,1140,top,no,blue,grey,brown,orange,3,5,cross,triangle,black,orange,black,orange,1,3,2,2,First
+1023,11,1000,416,Exactly Half of the triangles are orange.,cross,triangle,black,orange,black,orange,1,3,2,2,1140,1139,bottom,yes,blue,grey,brown,orange,2,1,cross,triangle,black,orange,black,orange,2,2,1,3,First
+1023,12,1000,417,Exactly Half of the crosses are orange.,cross,triangle,black,orange,black,orange,2,2,1,3,1139,5,top,yes,blue,grey,brown,orange,4,5,better,,,,,,,,,,First
+1023,12,1000,425,The number of triangles in each color is the same.,cross,triangle,black,orange,black,orange,2,2,1,3,1139,5,bottom,no,blue,grey,brown,orange,1,2,better,,,,,,,,,,Second
+1023,12,1000,426,There are two crosses of each color.,cross,triangle,black,orange,black,orange,1,3,2,2,1140,5,top,no,blue,grey,brown,orange,4,5,better,,,,,,,,,,Second
+1023,13,1000,427,There are two triangles of each color.,cross,triangle,black,orange,black,orange,1,3,2,2,1140,5,bottom,yes,green,purple,blue,orange,1,2,better,,,,,,,,,,First
+1023,13,1000,435,There are exactly two black triangles and exactly two orange triangles.,cross,triangle,black,orange,black,orange,1,3,2,2,1140,5,bottom,yes,green,purple,blue,orange,3,5,better,,,,,,,,,,First
+1023,13,1000,436,There are exactly three black crosses.,cross,triangle,black,orange,black,orange,2,2,1,3,1139,5,top,no,green,purple,blue,orange,2,1,better,,,,,,,,,,Second
+1033,11,1000,437,There are between two and four black circles.,circle,cross,black,orange,green,blue,3,1,0,4,1143,1144,top,yes,green,grey,purple,turquoise,1,2,circle,cross,black,orange,green,blue,0,4,3,1,First
+1033,11,1000,445,There are between one and three blue crosses.,circle,cross,black,orange,green,blue,0,4,3,1,1144,1143,bottom,yes,green,grey,purple,turquoise,3,5,circle,cross,black,orange,green,blue,3,1,0,4,First
+1033,11,1000,446,Exactly four crosses are blue.,circle,cross,black,orange,green,blue,3,1,0,4,1143,1144,bottom,no,green,grey,purple,turquoise,2,1,circle,cross,black,orange,green,blue,0,4,3,1,First
+1033,11,1000,447,Exactly four circles are orange.,circle,cross,black,orange,green,blue,0,4,3,1,1144,1143,top,no,green,grey,purple,turquoise,3,5,circle,cross,black,orange,green,blue,3,1,0,4,First
+1033,11,1000,455,Exactly one shape is orange.,circle,cross,black,orange,green,blue,3,1,0,4,1143,1144,both,yes,green,grey,purple,turquoise,2,1,circle,cross,black,orange,green,blue,0,4,3,1,First
+1033,11,1000,456,Exactly four shapes are blue.,circle,cross,black,orange,green,blue,0,4,3,1,1144,1143,both,yes,green,grey,purple,turquoise,4,5,circle,cross,black,orange,green,blue,3,1,0,4,Second
+1033,12,1000,457,The number of circles in each color is the same.,circle,cross,black,orange,green,blue,3,1,0,4,1143,5,top,no,green,grey,purple,turquoise,1,2,better,,,,,,,,,,Second
+1033,12,1000,465,The number of crosses in each color is the same.,circle,cross,black,orange,green,blue,0,4,3,1,1144,5,bottom,no,green,grey,purple,turquoise,4,5,better,,,,,,,,,,Second
+1033,12,1000,466,Exactly Half of the circles are blue.,circle,cross,black,orange,green,blue,0,4,3,1,1144,5,bottom,yes,orange,blue,green,purple,1,2,better,,,,,,,,,,Second
+1033,13,1000,467,Three circles are black and four crosses are blue.,circle,cross,black,orange,green,blue,3,1,0,4,1143,5,both,yes,orange,blue,green,purple,3,5,better,,,,,,,,,,First
+1033,13,1000,475,There are neither exactly two blue crosses nor exactly three orange circles.,circle,cross,black,orange,green,blue,3,1,0,4,1143,5,both,no,orange,blue,green,purple,2,1,better,,,,,,,,,,First
+1033,13,1000,476,There are exactly three green crosses.,circle,cross,black,orange,green,blue,0,4,3,1,1144,5,bottom,no,orange,blue,green,purple,3,5,better,,,,,,,,,,First
+1014,11,1000,477,There are exactly four brown crosses.,cross,square,green,brown,yellow,brown,0,4,1,3,1145,1146,top,yes,orange,blue,green,purple,2,1,cross,square,green,yellow,yellow,brown,0,4,3,1,First
+1014,11,1000,485,Exactly one square is brown.,cross,square,green,yellow,yellow,brown,0,4,3,1,1146,1145,bottom,yes,orange,blue,green,purple,4,5,cross,square,green,brown,yellow,brown,0,4,1,3,First
+1014,11,1000,486,There are between two and four brown squares.,cross,square,green,brown,yellow,brown,0,4,1,3,1145,1146,bottom,no,orange,blue,green,purple,1,2,cross,square,green,yellow,yellow,brown,0,4,3,1,First
+1014,11,1000,487,There are between two and four yellow crosses,cross,square,green,yellow,yellow,brown,0,4,3,1,1146,1145,top,no,orange,blue,green,purple,4,5,cross,square,green,brown,yellow,brown,0,4,1,3,First
+1014,11,1000,495,There are neither exactly two brown crosses nor exactly three brown squares.,cross,square,green,yellow,yellow,brown,0,4,3,1,1146,1145,both,yes,purple,yellow,black,grey,1,2,cross,square,green,brown,yellow,brown,0,4,1,3,First
+1014,11,1000,496,There are neither exactly two brown crosses nor exactly three yellow squares.,cross,square,green,brown,yellow,brown,0,4,1,3,1145,1146,both,yes,purple,yellow,black,grey,3,5,cross,square,green,yellow,yellow,brown,0,4,3,1,First
+1014,12,1000,497,Exactly three squares are yellow.,cross,square,green,brown,yellow,brown,0,4,1,3,1145,5,bottom,no,purple,yellow,black,grey,2,1,better,,,,,,,,,,Second
+1014,12,1000,505,Exactly Half of the crosses are yellow.,cross,square,green,brown,yellow,brown,0,4,1,3,1145,5,top,no,purple,yellow,black,grey,3,5,better,,,,,,,,,,Second
+1014,12,1000,506,Exactly Half of the crosses are brown.,cross,square,green,yellow,yellow,brown,0,4,3,1,1146,5,top,yes,purple,yellow,black,grey,2,1,better,,,,,,,,,,Second
+1014,13,1000,507,Exactly three squares are yellow.,cross,square,green,yellow,yellow,brown,0,4,3,1,1146,5,bottom,yes,purple,yellow,black,grey,4,5,better,,,,,,,,,,First
+1014,13,1000,515,There are seven brown shapes.,cross,square,green,brown,yellow,brown,0,4,1,3,1145,5,both,no,purple,yellow,black,grey,1,2,better,,,,,,,,,,First
+1024,11,1000,516,There are exactly two green hearts.,heart,triangle,green,brown,green,brown,2,2,1,3,1151,1152,top,no,purple,yellow,black,grey,4,5,heart,triangle,green,brown,green,brown,1,3,2,2,First
+1024,11,1000,517,There are neither exactly two green hearts nor exactly four brown hearts.,heart,triangle,green,brown,green,brown,1,3,2,2,1152,1151,top,yes,red,brown,black,blue,1,2,heart,triangle,green,brown,green,brown,2,2,1,3,First
+1024,11,1000,525,There are exactly three brown triangles.,heart,triangle,green,brown,green,brown,2,2,1,3,1151,1152,bottom,yes,red,brown,black,blue,3,5,heart,triangle,green,brown,green,brown,1,3,2,2,First
+1024,11,1000,526,Exactly Half of the triangles are green.,heart,triangle,green,brown,green,brown,1,3,2,2,1152,1151,bottom,no,red,brown,black,blue,2,1,heart,triangle,green,brown,green,brown,2,2,1,3,First
+1024,11,1000,527,The number of hearts in each color is the same.,heart,triangle,green,brown,green,brown,2,2,1,3,1151,1152,top,no,red,brown,black,blue,3,5,heart,triangle,green,brown,green,brown,1,3,2,2,First
+1024,11,1000,535,Exactly Half of the triangles are brown.,heart,triangle,green,brown,green,brown,1,3,2,2,1152,1151,bottom,yes,red,brown,black,blue,2,1,heart,triangle,green,brown,green,brown,2,2,1,3,First
+1024,12,1000,536,Exactly Half of the hearts are brown.,heart,triangle,green,brown,green,brown,2,2,1,3,1151,5,top,yes,red,brown,black,blue,4,5,better,,,,,,,,,,First
+1024,12,1000,537,The number of triangles in each color is the same.,heart,triangle,green,brown,green,brown,2,2,1,3,1151,5,bottom,no,red,brown,black,blue,1,2,better,,,,,,,,,,Second
+1024,12,1000,545,There are two hearts of each color.,heart,triangle,green,brown,green,brown,1,3,2,2,1152,5,top,no,red,brown,black,blue,4,5,better,,,,,,,,,,Second
+1024,13,1000,546,There are two triangles of each color.,heart,triangle,green,brown,green,brown,1,3,2,2,1152,5,bottom,yes,pink,green,yellow,black,1,2,better,,,,,,,,,,First
+1024,13,1000,547,There are exactly two green triangles and exactly two brown triangles.,heart,triangle,green,brown,green,brown,1,3,2,2,1152,5,bottom,yes,pink,green,yellow,black,3,5,better,,,,,,,,,,First
+1024,13,1000,555,There are exactly three green hearts.,heart,triangle,green,brown,green,brown,2,2,1,3,1151,5,top,no,pink,green,yellow,black,2,1,better,,,,,,,,,,Second
+1034,11,1000,556,There are between two and four green hearts.,heart,circle,green,brown,yellow,pink,3,1,0,4,1157,1158,top,no,pink,green,yellow,black,3,5,heart,circle,green,brown,yellow,pink,0,4,3,1,First
+1034,11,1000,557,There are between one and three pink circles.,heart,circle,green,brown,yellow,pink,0,4,3,1,1158,1157,bottom,yes,pink,green,yellow,black,2,1,heart,circle,green,brown,yellow,pink,3,1,0,4,First
+1034,11,1000,565,Exactly four circles are pink.,heart,circle,green,brown,yellow,pink,3,1,0,4,1157,1158,bottom,yes,pink,green,yellow,black,4,5,heart,circle,green,brown,yellow,pink,0,4,3,1,First
+1034,11,1000,566,Exactly four hearts are brown.,heart,circle,green,brown,yellow,pink,0,4,3,1,1158,1157,top,no,pink,green,yellow,black,1,2,heart,circle,green,brown,yellow,pink,3,1,0,4,First
+1034,11,1000,567,Exactly one shape is brown.,heart,circle,green,brown,yellow,pink,3,1,0,4,1157,1158,both,no,pink,green,yellow,black,4,5,heart,circle,green,brown,yellow,pink,0,4,3,1,First
+1034,11,1000,575,Exactly four shapes are pink.,heart,circle,green,brown,yellow,pink,0,4,3,1,1158,1157,both,yes,orange,turquoise,pink,grey,1,2,heart,circle,green,brown,yellow,pink,3,1,0,4,Second
+1034,12,1000,576,The number of hearts in each color is the same.,heart,circle,green,brown,yellow,pink,3,1,0,4,1157,5,top,yes,orange,turquoise,pink,grey,3,5,better,,,,,,,,,,Second
+1034,12,1000,577,The number of circles in each color is the same.,heart,circle,green,brown,yellow,pink,0,4,3,1,1158,5,bottom,no,orange,turquoise,pink,grey,2,1,better,,,,,,,,,,Second
+1034,12,1000,585,Exactly Half of the hearts are pink.,heart,circle,green,brown,yellow,pink,0,4,3,1,1158,5,bottom,no,orange,turquoise,pink,grey,3,5,better,,,,,,,,,,Second
+1034,13,1000,586,Three hearts are green and four circles are pink.,heart,circle,green,brown,yellow,pink,3,1,0,4,1157,5,both,yes,orange,turquoise,pink,grey,2,1,better,,,,,,,,,,First
+1034,13,1000,587,There are neither exactly two pink circles nor exactly three brown hearts.,heart,circle,green,brown,yellow,pink,3,1,0,4,1157,5,both,yes,orange,turquoise,pink,grey,4,5,better,,,,,,,,,,First
+1034,13,1000,595,There are exactly three yellow circles.,heart,circle,green,brown,yellow,pink,0,4,3,1,1158,5,bottom,no,orange,turquoise,pink,grey,1,2,better,,,,,,,,,,First
+1015,11,1000,596,There are exactly four orange circles.,circle,square,grey,orange,green,orange,0,4,1,3,1147,1148,top,yes,orange,red,yellow,purple,1,2,circle,square,grey,green,green,orange,0,4,3,1,First
+1015,11,1000,597,Exactly one square is orange.,circle,square,grey,green,green,orange,0,4,3,1,1148,1147,bottom,yes,orange,red,yellow,purple,3,5,circle,square,grey,orange,green,orange,0,4,1,3,First
+1015,11,1000,605,There are between two and four orange squares.,circle,square,grey,orange,green,orange,0,4,1,3,1147,1148,bottom,no,orange,red,yellow,purple,2,1,circle,square,grey,green,green,orange,0,4,3,1,First
+1015,11,1000,606,There are between two and four green circles,circle,square,grey,green,green,orange,0,4,3,1,1148,1147,top,no,orange,red,yellow,purple,3,5,circle,square,grey,orange,green,orange,0,4,1,3,First
+1015,11,1000,607,There are neither exactly two orange circles nor exactly three orange squares.,circle,square,grey,green,green,orange,0,4,3,1,1148,1147,both,yes,orange,red,yellow,purple,2,1,circle,square,grey,orange,green,orange,0,4,1,3,First
+1015,11,1000,615,There are neither exactly two orange circles nor exactly three green squares.,circle,square,grey,orange,green,orange,0,4,1,3,1147,1148,both,yes,orange,red,yellow,purple,4,5,circle,square,grey,green,green,orange,0,4,3,1,First
+1015,12,1000,616,Exactly three squares are green.,circle,square,grey,orange,green,orange,0,4,1,3,1147,5,bottom,no,orange,red,yellow,purple,1,2,better,,,,,,,,,,Second
+1015,12,1000,617,Exactly Half of the circles are green.,circle,square,grey,orange,green,orange,0,4,1,3,1147,5,top,no,orange,red,yellow,purple,4,5,better,,,,,,,,,,Second
+1015,12,1000,625,Exactly Half of the circles are orange.,circle,square,grey,green,green,orange,0,4,3,1,1148,5,top,yes,orange,yellow,purple,red,1,2,better,,,,,,,,,,Second
+1015,13,1000,626,Exactly three squares are green.,circle,square,grey,green,green,orange,0,4,3,1,1148,5,bottom,yes,orange,yellow,purple,red,3,5,better,,,,,,,,,,First
+1015,13,1000,627,There are seven orange shapes.,circle,square,grey,orange,green,orange,0,4,1,3,1147,5,both,no,orange,yellow,purple,red,2,1,better,,,,,,,,,,First
+1015,13,1000,635,There is exactly one orange shape.,circle,square,grey,green,green,orange,0,4,3,1,1148,5,both,no,orange,yellow,purple,red,3,5,better,,,,,,,,,,First
+1025,11,1000,636,There are exactly two grey crosses.,cross,heart,grey,orange,grey,orange,2,2,1,3,1153,1154,top,no,orange,turquoise,pink,grey,4,5,cross,heart,grey,orange,grey,orange,1,3,2,2,First
+1025,11,1000,637,There are neither exactly two orange crosses nor exactly four orange crosses.,cross,heart,grey,orange,grey,orange,1,3,2,2,1154,1153,top,yes,blue,grey,brown,orange,1,2,cross,heart,grey,orange,grey,orange,2,2,1,3,First
+1025,11,1000,645,There are exactly three orange hearts.,cross,heart,grey,orange,grey,orange,2,2,1,3,1153,1154,bottom,yes,blue,grey,brown,orange,3,5,cross,heart,grey,orange,grey,orange,1,3,2,2,First
+1025,11,1000,646,Exactly Half of the hearts are grey.,cross,heart,grey,orange,grey,orange,1,3,2,2,1154,1153,bottom,no,blue,grey,brown,orange,2,1,cross,heart,grey,orange,grey,orange,2,2,1,3,First
+1025,11,1000,647,The number of crosses in each color is the same.,cross,heart,grey,orange,grey,orange,2,2,1,3,1153,1154,top,no,blue,grey,brown,orange,3,5,cross,heart,grey,orange,grey,orange,1,3,2,2,First
+1025,11,1000,655,Exactly Half of the hearts are orange.,cross,heart,grey,orange,grey,orange,1,3,2,2,1154,1153,bottom,yes,blue,grey,brown,orange,2,1,cross,heart,grey,orange,grey,orange,2,2,1,3,First
+1025,12,1000,656,Exactly Half of the crosses are orange.,cross,heart,grey,orange,grey,orange,2,2,1,3,1153,5,top,yes,blue,grey,brown,orange,4,5,better,,,,,,,,,,First
+1025,12,1000,657,The number of hearts in each color is the same.,cross,heart,grey,orange,grey,orange,2,2,1,3,1153,5,bottom,no,blue,grey,brown,orange,1,2,better,,,,,,,,,,Second
+1025,12,1000,665,There are two crosses of each color.,cross,heart,grey,orange,grey,orange,1,3,2,2,1154,5,top,no,blue,grey,brown,orange,4,5,better,,,,,,,,,,Second
+1025,13,1000,666,There are two hearts of each color.,cross,heart,grey,orange,grey,orange,1,3,2,2,1154,5,bottom,yes,black,purple,blue,orange,1,2,better,,,,,,,,,,First
+1025,13,1000,667,There are exactly two orange hearts and exactly two gray hearts.,cross,heart,grey,orange,grey,orange,1,3,2,2,1154,5,bottom,yes,black,purple,blue,orange,3,5,better,,,,,,,,,,First
+1025,13,1000,675,There are exactly three grey crosses.,cross,heart,grey,orange,grey,orange,2,2,1,3,1153,5,top,no,black,purple,blue,orange,2,1,better,,,,,,,,,,Second
+1035,11,1000,676,There are between two and four grey squares.,square,triangle,grey,orange,green,blue,3,1,0,4,1159,1160,top,no,blue,green,yellow,black,3,5,square,triangle,grey,orange,green,blue,0,4,3,1,First
+1035,11,1000,677,There are between one and three blue triangles.,square,triangle,grey,orange,green,blue,0,4,3,1,1160,1159,bottom,yes,blue,green,yellow,black,2,1,square,triangle,grey,orange,green,blue,3,1,0,4,First
+1035,11,1000,685,Exactly four triangles are blue.,square,triangle,grey,orange,green,blue,3,1,0,4,1159,1160,bottom,yes,blue,green,yellow,black,4,5,square,triangle,grey,orange,green,blue,0,4,3,1,First
+1035,11,1000,686,Exactly four squares are orange.,square,triangle,grey,orange,green,blue,0,4,3,1,1160,1159,top,no,blue,green,yellow,black,1,2,square,triangle,grey,orange,green,blue,3,1,0,4,First
+1035,11,1000,687,Exactly one shape is orange.,square,triangle,grey,orange,green,blue,3,1,0,4,1159,1160,both,no,blue,green,yellow,black,4,5,square,triangle,grey,orange,green,blue,0,4,3,1,First
+1035,11,1000,695,Exactly four shapes are blue.,square,triangle,grey,orange,green,blue,0,4,3,1,1160,1159,both,yes,brown,turquoise,blue,grey,1,2,square,triangle,grey,orange,green,blue,3,1,0,4,Second
+1035,12,1000,696,The number of squares in each color is the same.,square,triangle,grey,orange,green,blue,3,1,0,4,1159,5,top,yes,brown,turquoise,blue,grey,3,5,better,,,,,,,,,,Second
+1035,12,1000,697,The number of triangles in each color is the same.,square,triangle,grey,orange,green,blue,0,4,3,1,1160,5,bottom,no,brown,turquoise,blue,grey,2,1,better,,,,,,,,,,Second
+1035,12,1000,705,Exactly Half of the squares are blue.,square,triangle,grey,orange,green,blue,0,4,3,1,1160,5,bottom,no,brown,turquoise,blue,grey,3,5,better,,,,,,,,,,Second
+1035,13,1000,706,Three squares are grey and four triangles are blue.,square,triangle,grey,orange,green,blue,3,1,0,4,1159,5,both,yes,brown,turquoise,blue,grey,2,1,better,,,,,,,,,,First
+1035,13,1000,707,There are neither exactly two blue triangles nor exactly three orange squares.,square,triangle,grey,orange,green,blue,3,1,0,4,1159,5,both,yes,brown,turquoise,blue,grey,4,5,better,,,,,,,,,,First
+1035,13,1000,715,There are exactly three green triangles.,square,triangle,grey,orange,green,blue,0,4,3,1,1160,5,bottom,no,brown,turquoise,blue,grey,1,2,better,,,,,,,,,,First
+1016,11,1000,716,There are exactly four black triangles.,triangle,cross,orange,black,blue,black,0,4,1,3,1149,1150,top,yes,orange,blue,black,purple,1,2,triangle,cross,orange,blue,blue,black,0,4,3,1,First
+1016,11,1000,717,Exactly one cross is black.,triangle,cross,orange,blue,blue,black,0,4,3,1,1150,1149,bottom,yes,orange,blue,black,purple,3,5,triangle,cross,orange,black,blue,black,0,4,1,3,First
+1016,11,1000,725,There are between two and four black crosses.,triangle,cross,orange,black,blue,black,0,4,1,3,1149,1150,bottom,no,orange,blue,black,purple,2,1,triangle,cross,orange,blue,blue,black,0,4,3,1,First
+1016,11,1000,726,There are between two and four blue triangles,triangle,cross,orange,blue,blue,black,0,4,3,1,1150,1149,top,no,orange,blue,black,purple,3,5,triangle,cross,orange,black,blue,black,0,4,1,3,First
+1016,11,1000,727,There are neither exactly two black triangles nor exactly three black crosses.,triangle,cross,orange,blue,blue,black,0,4,3,1,1150,1149,both,yes,orange,blue,black,purple,2,1,triangle,cross,orange,black,blue,black,0,4,1,3,First
+1016,11,1000,735,There are neither exactly two black triangles nor exactly three blue crosses.,triangle,cross,orange,black,blue,black,0,4,1,3,1149,1150,both,yes,orange,blue,black,purple,4,5,triangle,cross,orange,blue,blue,black,0,4,3,1,First
+1016,12,1000,736,Exactly three crosses are blue.,triangle,cross,orange,black,blue,black,0,4,1,3,1149,5,bottom,no,orange,blue,black,purple,1,2,better,,,,,,,,,,Second
+1016,12,1000,737,Exactly Half of the triangles are blue.,triangle,cross,orange,black,blue,black,0,4,1,3,1149,5,top,no,orange,blue,black,purple,4,5,better,,,,,,,,,,Second
+1016,12,1000,745,Exactly Half of the triangles are black.,triangle,cross,orange,blue,blue,black,0,4,3,1,1150,5,top,yes,orange,black,purple,blue,1,2,better,,,,,,,,,,Second
+1016,13,1000,746,Exactly three crosses are blue.,triangle,cross,orange,blue,blue,black,0,4,3,1,1150,5,bottom,yes,orange,black,purple,blue,3,5,better,,,,,,,,,,First
+1016,13,1000,747,There are seven black shapes.,triangle,cross,orange,black,blue,black,0,4,1,3,1149,5,both,no,orange,black,purple,blue,2,1,better,,,,,,,,,,First
+1016,13,1000,755,There is exactly one black shape.,triangle,cross,orange,blue,blue,black,0,4,3,1,1150,5,both,no,orange,black,purple,blue,3,5,better,,,,,,,,,,First
+1026,11,1000,756,There are exactly two orange triangles.,triangle,heart,orange,black,orange,black,2,2,1,3,1155,1156,top,no,orange,turquoise,grey,grey,4,5,triangle,heart,orange,black,orange,black,1,3,2,2,First
+1026,11,1000,757,There are neither exactly two black triangles nor exactly four black triangles.,triangle,heart,orange,black,orange,black,1,3,2,2,1156,1155,top,yes,blue,grey,brown,orange,1,2,triangle,heart,orange,black,orange,black,2,2,1,3,First
+1026,11,1000,765,There are exactly three black hearts.,triangle,heart,orange,black,orange,black,2,2,1,3,1155,1156,bottom,yes,blue,grey,brown,orange,3,5,triangle,heart,orange,black,orange,black,1,3,2,2,First
+1026,11,1000,766,Exactly Half of the hearts are orange.,triangle,heart,orange,black,orange,black,1,3,2,2,1156,1155,bottom,no,blue,grey,brown,orange,2,1,triangle,heart,orange,black,orange,black,2,2,1,3,First
+1026,11,1000,767,The number of triangles in each color is the same.,triangle,heart,orange,black,orange,black,2,2,1,3,1155,1156,top,no,blue,grey,brown,orange,3,5,triangle,heart,orange,black,orange,black,1,3,2,2,First
+1026,11,1000,775,Exactly Half of the hearts are black.,triangle,heart,orange,black,orange,black,1,3,2,2,1156,1155,bottom,yes,blue,grey,brown,orange,2,1,triangle,heart,orange,black,orange,black,2,2,1,3,First
+1026,12,1000,776,Exactly Half of the triangles are black.,triangle,heart,orange,black,orange,black,2,2,1,3,1155,5,top,yes,blue,grey,brown,orange,4,5,better,,,,,,,,,,First
+1026,12,1000,777,The number of hearts in each color is the same.,triangle,heart,orange,black,orange,black,2,2,1,3,1155,5,bottom,no,blue,grey,brown,orange,1,2,better,,,,,,,,,,Second
+1026,12,1000,785,There are two triangles of each color.,triangle,heart,orange,black,orange,black,1,3,2,2,1156,5,top,no,blue,grey,brown,orange,4,5,better,,,,,,,,,,Second
+1026,13,1000,786,There are two hearts of each color.,triangle,heart,orange,black,orange,black,1,3,2,2,1156,5,bottom,yes,green,purple,blue,orange,1,2,better,,,,,,,,,,First
+1026,13,1000,787,There are exactly two black hearts and exactly two orange hearts.,triangle,heart,orange,black,orange,black,1,3,2,2,1156,5,bottom,yes,green,purple,blue,orange,3,5,better,,,,,,,,,,First
+1026,13,1000,795,There are exactly three orange triangles.,triangle,heart,orange,black,orange,black,2,2,1,3,1155,5,top,no,green,purple,blue,orange,2,1,better,,,,,,,,,,Second
+1036,11,1000,796,There are between two and four orange squares.,square,cross,orange,black,blue,green,3,1,0,4,1161,1162,top,yes,green,grey,purple,turquoise,1,2,square,cross,orange,black,blue,green,0,4,3,1,First
+1036,11,1000,797,There are between one and three green crosses.,square,cross,orange,black,blue,green,0,4,3,1,1162,1161,bottom,yes,green,grey,purple,turquoise,3,5,square,cross,orange,black,blue,green,3,1,0,4,First
+1036,11,1000,805,Exactly four crosses are green.,square,cross,orange,black,blue,green,3,1,0,4,1161,1162,bottom,no,green,grey,purple,turquoise,2,1,square,cross,orange,black,blue,green,0,4,3,1,First
+1036,11,1000,806,Exactly four squares are black.,square,cross,orange,black,blue,green,0,4,3,1,1162,1161,top,no,green,grey,purple,turquoise,3,5,square,cross,orange,black,blue,green,3,1,0,4,First
+1036,11,1000,807,Exactly one shape is black.,square,cross,orange,black,blue,green,3,1,0,4,1161,1162,both,yes,green,grey,purple,turquoise,2,1,square,cross,orange,black,blue,green,0,4,3,1,First
+1036,11,1000,815,Exactly four shapes are green.,square,cross,orange,black,blue,green,0,4,3,1,1162,1161,both,yes,green,grey,purple,turquoise,4,5,square,cross,orange,black,blue,green,3,1,0,4,Second
+1036,12,1000,816,The number of squares in each color is the same.,square,cross,orange,black,blue,green,3,1,0,4,1161,5,top,no,green,grey,purple,turquoise,1,2,better,,,,,,,,,,Second
+1036,12,1000,817,The number of crosses in each color is the same.,square,cross,orange,black,blue,green,0,4,3,1,1162,5,bottom,no,green,grey,purple,turquoise,4,5,better,,,,,,,,,,Second
+1036,12,1000,825,Exactly Half of the squares are green.,square,cross,orange,black,blue,green,0,4,3,1,1162,5,bottom,yes,orange,blue,green,purple,1,2,better,,,,,,,,,,Second
+1036,13,1000,826,Three squares are orange and four crosses are green.,square,cross,orange,black,blue,green,3,1,0,4,1161,5,both,yes,orange,blue,green,purple,3,5,better,,,,,,,,,,First
+1036,13,1000,827,There are neither exactly two green crosses nor exactly three black squares.,square,cross,orange,black,blue,green,3,1,0,4,1161,5,both,no,orange,blue,green,purple,2,1,better,,,,,,,,,,First
+1036,13,1000,835,There are exactly three blue crosses.,square,cross,orange,black,blue,green,0,4,3,1,1162,5,bottom,no,orange,blue,green,purple,3,5,better,,,,,,,,,,First

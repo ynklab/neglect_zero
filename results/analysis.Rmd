@@ -1,0 +1,518 @@
+---
+title: "Statistical Analysis"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Analysis of results
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(broom)
+library(lme4)
+library(nnet)
+library(xtable)
+library(WebPower)
+library(ggplot2)
+library(gridExtra)
+library(ggsignif)
+library(dplyr)
+library(tidyr)
+library(sjPlot)
+library(interactions)
+library(logistf)
+
+# Clear environment
+rm(list=ls())
+
+#### Set the theme of the plots
+theme_set(theme_bw()+ 
+            theme(plot.title = element_text(colour = "black", face = "bold",hjust = 0.5)) + theme(axis.text = element_text(size = 12, colour = "black", face = "bold"))+
+            theme(axis.title = element_text(size = 13, colour = "black", face = "bold")))
+```
+
+## Loading data and encode variables
+
+```{r}
+# Load the integrated CSV file, and you should change the name of file
+data <- read.csv('integrated_result_gpt5nano.csv', stringsAsFactors = FALSE)
+
+data <- data %>%
+  rename(
+    id = Subject,
+    item = Item_ID,
+    subexp = Group,
+    accuracy_num = Is_Correct
+  )
+
+data$subexp <- factor(data$subexp, levels = c("BAS", "DIST", "UPP", "ESQ"))
+
+data$trial_index <- as.numeric(data$trial_index)
+
+# For BAS, we assign a placeholder or keep NA initially
+data$condition_factor <- NA
+data$condition_factor[data$Prev_Prime_Cat == 'Critical'] <- "critical"
+data$condition_factor[data$Prev_Prime_Cat == 'Control'] <- "control"
+data$condition_factor[data$Prev_Prime_Cat == 'BAS'] <- "baseline"
+
+# Critical=1, Control=0
+data$condition <- NA
+data$condition[data$Prev_Prime_Cat == 'Critical'] <- 1
+data$condition[data$Prev_Prime_Cat == 'Control'] <- 0
+```
+
+## Filter data subset
+
+```{r}
+fillers <- filter(data, Type == 'Filler')
+data_exp <- filter(data, Type %in% c('Prime', 'Target'))
+data_exp$is_prime <- data_exp$Type == 'Prime'
+```
+
+## Accuracy in fillers
+
+```{r}
+# Overall filler accuracy
+mean(fillers$accuracy_num)
+
+# Filler accuracy by sub-experiment
+fillers %>%
+   group_by(subexp) %>%
+  dplyr::summarise(
+    n=n(),
+    mean=mean(accuracy_num),
+    sd=sd(accuracy_num)
+  )
+
+# Plot Filler Accuracy
+fillers %>%
+   group_by(subexp) %>%
+  dplyr::summarise(
+    n=n(),
+    mean=mean(accuracy_num),
+    sd=sd(accuracy_num)
+  ) %>%
+  mutate( se=sd/sqrt(n))  %>%
+  # Use t-distribution for confidence intervals
+  mutate( ic=se * qt((1-0.01)/2 + .5, n-1))%>%
+  ggplot(aes(x=subexp, y=mean)) +
+  geom_bar(stat= "identity", colour="#3E3E3E", fill="#8FAADC") +
+  ggtitle("Fillers")+
+  ylab("Percentage of correct responses to fillers") +
+  xlab("Subexperiment")+
+  theme(legend.position='none')+
+  geom_errorbar( aes(x=subexp, ymin=mean-se, ymax=mean+se), width=0.4, colour="#3E3E3E", alpha=0.9, linewidth=0.8)+
+  coord_cartesian(ylim = c(0, 1))
+```
+
+## Exclude participants based on accuracy
+
+```{r}
+# Calculate mean accuracy per participant on fillers
+agg_acc_fil <- aggregate(accuracy_num ~ id, data = fillers, mean)
+names(agg_acc_fil) <- c("id", "mean")
+
+# Define good seeds (> 75% accuracy)
+good_pps <- agg_acc_fil[agg_acc_fil$mean > .75,]$id
+other_pps <- agg_acc_fil[agg_acc_fil$mean <= .75,]$id
+
+data_exp_pp <- subset(data_exp, id %in% good_pps)
+
+cat("Excluded participants:", length(unique(data$id)) - length(unique(data_exp_pp$id)), "\n")
+```
+
+## Exclude participants based on accuracy
+
+```{r}
+# Calculate mean accuracy per participant on fillers
+agg_acc_fil <- aggregate(accuracy_num ~ id, data = fillers, mean)
+names(agg_acc_fil) <- c("id", "mean_acc")
+
+id_to_group <- unique(data[, c("id", "subexp")])
+agg_acc_fil <- merge(agg_acc_fil, id_to_group, by = "id")
+
+threshold <- 0.75
+
+good_pps <- agg_acc_fil[agg_acc_fil$mean_acc > threshold, ]$id
+bad_pps <- agg_acc_fil[agg_acc_fil$mean_acc <= threshold, ]$id
+
+exclusion_summary <- agg_acc_fil %>%
+  group_by(subexp) %>%
+  summarise(
+    Total_Seeds = n(),
+    Kept = sum(mean_acc > threshold),
+    Excluded = sum(mean_acc <= threshold),
+    Exclusion_Rate = paste0(round(sum(mean_acc <= threshold) / n() * 100, 1), "%")
+  )
+
+total_row <- data.frame(
+  subexp = "TOTAL",
+  Total_Seeds = sum(exclusion_summary$Total_Seeds),
+  Kept = sum(exclusion_summary$Kept),
+  Excluded = sum(exclusion_summary$Excluded),
+  Exclusion_Rate = paste0(round(sum(exclusion_summary$Excluded) / sum(exclusion_summary$Total_Seeds) * 100, 1), "%")
+)
+
+final_summary <- rbind(exclusion_summary, total_row)
+
+print(knitr::kable(final_summary, caption = "Number of Excluded Seeds by Sub-experiment (Filler Accuracy <= 75%)"))
+
+data_exp_pp <- subset(data_exp, id %in% good_pps)
+
+cat("\nTotal excluded participants:", length(bad_pps), "\n")
+```
+
+
+## Split data of included pps into primes and targets
+
+```{r}
+data_exp_pp_prime <- subset(data_exp_pp, is_prime)
+data_exp_pp_target <- subset(data_exp_pp, !is_prime)
+
+data_exp_pp_target$condition <- NA
+data_exp_pp_target$condition[data_exp_pp_target$Prev_Prime_Cat == 'Critical'] <- 1
+data_exp_pp_target$condition[data_exp_pp_target$Prev_Prime_Cat == 'Control'] <- 0
+
+data_exp_pp_target$condition[data_exp_pp_target$Group == 'BAS'] <- NA
+
+data_exp_pp_target$condition_factor <- as.factor(ifelse(data_exp_pp_target$condition==1, "critical", "control"))
+```
+
+## Analysis of Accuracy in Primes
+
+```{r}
+prime_accuracy_summary <- data_exp_pp_prime %>%
+  group_by(subexp) %>%
+  summarise(
+    Critical_Prime_Count = sum(Prime_Category == 'Critical', na.rm = TRUE),
+    Control_Prime_Count = sum(Prime_Category == 'Control', na.rm = TRUE),
+    
+    Critical_Prime_Acc = mean(accuracy_num[Prime_Category == 'Critical'], na.rm = TRUE),
+    Control_Prime_Acc = mean(accuracy_num[Prime_Category == 'Control'], na.rm = TRUE),
+    Total_Prime_Acc = mean(accuracy_num, na.rm = TRUE),
+    
+    n_primes = n()
+  )
+
+print(prime_accuracy_summary)
+data_exp_pp_prime %>%
+  filter(!is.na(Prime_Category) & Prime_Category != "") %>%
+  group_by(subexp, Prime_Category) %>%
+  summarise(mean_acc = mean(accuracy_num), 
+            se = sd(accuracy_num)/sqrt(n()), .groups = 'drop') %>%
+  ggplot(aes(x = subexp, y = mean_acc, fill = Prime_Category)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_errorbar(aes(ymin = mean_acc - se, ymax = mean_acc + se), 
+                width = 0.2, position = position_dodge(0.9)) +
+  labs(title = "Accuracy in Prime Trials by Category", y = "Accuracy", x = "Group") +
+  coord_cartesian(ylim = c(0, 1)) +
+  theme_bw()
+```
+
+## Plot and tabulate accuracy (Target Choice)
+
+```{r}
+# Plot Target Accuracy (Open Picture Choices / Is_Correct) by Group
+data_exp_pp_target %>%
+   group_by(subexp) %>%
+  dplyr::summarise( 
+    n=n(),
+    mean=mean(accuracy_num),
+    sd=sd(accuracy_num)
+  ) %>%
+  mutate( se=sd/sqrt(n))  %>%
+  mutate( ic=se * qt((1-0.01)/2 + .5, n-1))%>%
+  ggplot(aes(x=subexp, y=mean)) + 
+  geom_bar(stat= "identity", colour="#3E3E3E", fill="#8FAADC") +
+  ggtitle("TARGET")+
+  ylab("Percentage of correct responses (Target)") + 
+  xlab("Subexperiment")+
+  theme(legend.position='none')+
+  geom_errorbar( aes(x=subexp, ymin=mean-se, ymax=mean+se), width=0.4, colour="#3E3E3E", alpha=0.9, size=0.8)+
+  coord_cartesian(ylim = c(0, 1))
+
+data_exp_pp_target %>%
+   group_by(subexp) %>%
+  dplyr::summarise( 
+    n=n(),
+    mean=mean(accuracy_num),
+    sd=sd(accuracy_num)
+  )
+```
+
+## Filter Targets based on Prime Accuracy
+
+```{r}
+prime_performance <- data_exp_pp_prime %>%
+  dplyr::select(id, item, prime_accuracy = accuracy_num)
+
+data_exp_pp_target <- data_exp_pp_target %>%
+  left_join(prime_performance, by = c("id", "item"))
+
+cat("Total Targets (Before filtering):", nrow(data_exp_pp_target), "\n")
+
+data_targets_valid_prime <- data_exp_pp_target %>%
+  filter(prime_accuracy == 1)
+
+cat("Total Targets (After filtering by Prime accuracy):", nrow(data_targets_valid_prime), "\n")
+cat("Excluded Trials:", nrow(data_exp_pp_target) - nrow(data_targets_valid_prime), "\n")
+
+data_exp_pp_target <- data_targets_valid_prime
+```
+
+
+
+## GLMER for BAS (Baseline)
+
+```{r}
+data_bas <- filter(data_exp_pp_target, subexp == 'BAS')
+
+model0_bas <- glmer(accuracy_num ~ trial_index + (1+trial_index|id) + (1|item),
+               data=data_bas,
+               family = binomial, control = glmerControl(optimizer = 'bobyqa'))
+
+summary(model0_bas)
+
+plot_model(model0_bas, type="pred", terms="trial_index")
+```
+
+## GLMER and model plots for DIST (Corresponding to 'OR' in original)
+
+```{r}
+data_dist <- filter(data_exp_pp_target, subexp == 'DIST')
+data_dist <- filter(data_dist, Prev_Prime_Cat %in% c('Control', 'Critical'))
+data_dist$condition <- as.factor(data_dist$condition) # 1=Critical, 0=Control
+
+model0_dist <- glmer(accuracy_num ~ trial_index * condition + (1 + trial_index | id) + (1 | item),
+               data=data_dist,
+               family = binomial, control = glmerControl(optimizer = 'bobyqa'))
+
+summary(model0_dist)
+
+ip_dist <- interact_plot(model0_dist, pred=trial_index, modx = condition,
+              plot.points = TRUE, interval = TRUE, 
+              legend.main = "The Prime", 
+              modx.labels = c("Cont.", "Crit.")) +
+  xlab("Trial Index") + ylab("The Rate of Choosing a Zero-model") +
+  ggtitle("DIS") +
+  theme(legend.position="bottom")
+
+ip_dist
+ggsave("dis_gemma3_1b.png")
+```
+
+
+## GLMER comparison: DIST vs BAS
+
+```{r}
+data_comp_dist <- filter(data_exp_pp_target, subexp %in% c('DIST', 'BAS'))
+
+data_comp_dist$cond_comp <- ifelse(data_comp_dist$subexp == 'BAS', 'Baseline', 
+                                   ifelse(data_comp_dist$condition == 1, 'Critical', 'Control'))
+data_comp_dist$cond_comp <- factor(data_comp_dist$cond_comp, levels = c('Baseline', 'Control', 'Critical'))
+
+model_comp_dist <- glmer(accuracy_num ~ trial_index * cond_comp + (1 +trial_index| id) + (1 | item),
+               data=data_comp_dist,
+               family = binomial, control = glmerControl(optimizer = 'bobyqa'))
+
+summary(model_comp_dist)
+plot_model(model_comp_dist, type="pred", terms=c("trial_index", "cond_comp"))
+```
+
+## GLMER and model plots for UPP (Corresponding to 'SOME' in original)
+
+```{r}
+data_upp <- filter(data_exp_pp_target, subexp == 'UPP')
+data_upp <- filter(data_upp, Prev_Prime_Cat %in% c('Control', 'Critical'))
+data_upp$condition <- as.factor(data_upp$condition)
+
+model0_upp <- glmer(accuracy_num ~ trial_index * condition + (1 + trial_index | id) + (1 | item),
+               data=data_upp,
+               family = binomial, control = glmerControl(optimizer = 'bobyqa'))
+
+summary(model0_upp)
+
+ip_upp <- interact_plot(model0_upp, pred=trial_index, modx = condition,
+              plot.points = TRUE, interval = TRUE, 
+              legend.main = "The Prime", 
+              modx.labels = c("Cont.", "Crit.")) +
+  xlab("Trial Index") + ylab("The Rate of Choosing a Zero-model") +
+  ggtitle("UPP") +
+  theme(legend.position="bottom")
+
+ip_upp
+ggsave("upp_gemma3_1b.png")
+```
+
+## GLMER comparison: UPP vs BAS
+
+```{r}
+data_comp_upp <- filter(data_exp_pp_target, subexp %in% c('UPP', 'BAS'))
+
+data_comp_upp$cond_comp <- ifelse(data_comp_upp$subexp == 'BAS', 'Baseline', 
+                                   ifelse(data_comp_upp$Prev_Prime_Cat == 'Critical', 'Critical', 'Control'))
+
+data_comp_upp$cond_comp <- factor(data_comp_upp$cond_comp, levels = c('Baseline', 'Control', 'Critical'))
+
+model_comp_upp <- glmer(accuracy_num ~ trial_index * cond_comp + (1 + trial_index | id) + (1 | item),
+                        data = data_comp_upp,
+                        family = binomial, control = glmerControl(optimizer = 'bobyqa'))
+
+summary(model_comp_upp)
+
+plot_model(model_comp_upp, type="pred", terms=c("trial_index", "cond_comp"),
+           title = "Comparison: UPP vs BAS")
+```
+
+## GLMER and model plots for ESQ (Corresponding to 'SUPER' in original)
+
+```{r}
+data_esq <- filter(data_exp_pp_target, subexp == 'ESQ')
+data_esq <- filter(data_esq, Prev_Prime_Cat %in% c('Control', 'Critical'))
+data_esq$condition <- as.factor(data_esq$condition)
+
+model0_esq <- glmer(accuracy_num ~ trial_index * condition + (1 + trial_index | id) + (1 | item),
+               data=data_esq,
+               family = binomial, control = glmerControl(optimizer = 'bobyqa'))
+
+summary(model0_esq)
+
+ip_esq <- interact_plot(model0_esq, pred=trial_index, modx = condition,
+              plot.points = TRUE, interval = TRUE, 
+              legend.main = "The Prime", 
+              modx.labels = c("Cont.", "Crit.")) +
+  xlab("Trial Index") + ylab("The Rate of Choosing a Zero-model") +
+  ggtitle("ESQ") +
+  theme(legend.position="bottom")
+
+ip_esq
+ggsave("esq_gemma3_1b.png")
+```
+
+```{r}
+data_comp_esq <- filter(data_exp_pp_target, subexp %in% c('ESQ', 'BAS'))
+
+data_comp_esq$cond_comp <- ifelse(data_comp_esq$subexp == 'BAS', 'Baseline', 
+                                   ifelse(data_comp_esq$Prev_Prime_Cat == 'Critical', 'Critical', 'Control'))
+
+data_comp_esq$cond_comp <- factor(data_comp_esq$cond_comp, levels = c('Baseline', 'Control', 'Critical'))
+
+model_comp_esq <- glmer(accuracy_num ~ trial_index * cond_comp + (1 + trial_index | id) + (1 | item),
+                        data = data_comp_esq,
+                        family = binomial, control = glmerControl(optimizer = 'bobyqa'))
+
+summary(model_comp_esq)
+
+plot_model(model_comp_esq, type="pred", terms=c("trial_index", "cond_comp"),
+           title = "Comparison: ESQ vs BAS")
+```
+
+## Combining Plots
+
+```{r}
+grid.arrange(ip_dist, ip_upp, ip_esq, ncol=3)
+```
+
+## Plot priming effect across sub-experiments
+
+```{r}
+summary_plot <- data_exp_pp_target %>%
+  filter(!is.na(condition_factor)) %>%
+  group_by(subexp, condition_factor) %>%
+  summarise(mean_acc = mean(accuracy_num), 
+            se = sd(accuracy_num)/sqrt(n()),
+            .groups = 'drop')
+
+ggplot(summary_plot, aes(x = condition_factor, y = mean_acc, group = subexp, color = subexp)) +
+  geom_point(size = 4) +
+  geom_line(size = 1.2) +
+  geom_errorbar(aes(ymin = mean_acc - se, ymax = mean_acc + se), width = 0.1) +
+  labs(title = "Priming Effect Across Sub-experiments",
+       x = "Condition", y = "Acceptance Rate / Accuracy",
+       color = "Group") +
+  theme_bw()
+```
+
+```{r}
+target_acc_summary <- data_exp_pp_target %>%
+  filter(condition_factor %in% c("critical", "control")) %>%
+  group_by(subexp, condition_factor) %>%
+  summarise(
+    n = n(),
+    mean_acc = mean(accuracy_num, na.rm = TRUE),
+    sd = sd(accuracy_num, na.rm = TRUE),
+    .groups = 'drop'
+  ) %>%
+  mutate(
+    se = sd / sqrt(n) 
+  )
+
+print(knitr::kable(target_acc_summary, digits = 3, caption = "Target Accuracy by Prime Condition"))
+
+ggplot(target_acc_summary, aes(x = subexp, y = mean_acc, fill = condition_factor)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8), width = 0.7, color = "black", alpha = 0.8) +
+  
+  geom_errorbar(aes(ymin = mean_acc - se, ymax = mean_acc + se),
+                position = position_dodge(width = 0.8), width = 0.25, size = 0.8) +
+  
+  scale_fill_manual(values = c("control" = "#999999", "critical" = "#56B4E9"),
+                    labels = c("Control Prime", "Critical Prime")) +
+  
+  labs(
+    title = "Target Accuracy: Critical vs. Control Prime",
+    subtitle = "Only targets following correct primes included",
+    x = "Sub-experiment",
+    y = "Mean Target Accuracy",
+    fill = "Condition"
+  ) +
+  
+  coord_cartesian(ylim = c(0, 1)) +
+  
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14),
+    axis.text = element_text(size = 12, face = "bold"),
+    axis.title = element_text(size = 13, face = "bold"),
+    legend.position = "bottom",
+    legend.title = element_text(face = "bold")
+  )
+```
+
+```{r}
+data_firth <- data_exp_pp_target %>%
+  filter(condition_factor %in% c("control", "critical")) %>%
+  mutate(
+    condition_factor = factor(condition_factor, levels = c("control", "critical")),
+    subexp = factor(subexp)
+  )
+
+cat("=== Overall Firth Logistic Regression ===\n")
+model_firth_all <- logistf(accuracy_num ~ condition_factor * subexp, data = data_firth)
+print(summary(model_firth_all))
+
+cat("\n=== Firth Regression: DIST ===\n")
+data_dist_firth <- filter(data_firth, subexp == 'DIST')
+if(nrow(data_dist_firth) > 0) {
+  model_firth_dist <- logistf(accuracy_num ~ condition_factor, data = data_dist_firth)
+  print(summary(model_firth_dist))
+}
+
+cat("\n=== Firth Regression: UPP ===\n")
+data_upp_firth <- filter(data_firth, subexp == 'UPP')
+if(nrow(data_upp_firth) > 0) {
+  model_firth_upp <- logistf(accuracy_num ~ condition_factor, data = data_upp_firth)
+  print(summary(model_firth_upp))
+}
+
+cat("\n=== Firth Regression: ESQ ===\n")
+data_esq_firth <- filter(data_firth, subexp == 'ESQ')
+if(nrow(data_esq_firth) > 0) {
+  model_firth_esq <- logistf(accuracy_num ~ condition_factor, data = data_esq_firth)
+  print(summary(model_firth_esq))
+}
+
+```
